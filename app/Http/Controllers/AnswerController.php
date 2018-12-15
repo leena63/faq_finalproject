@@ -7,6 +7,9 @@ use App\Question;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use App\Notifications\NewMessage;
+use App\Notifications\UpdateMessage;
+use App\User;
 
 class AnswerController extends Controller
 {
@@ -54,6 +57,8 @@ class AnswerController extends Controller
         $Answer->user()->associate(Auth::user());
         $Answer->question()->associate($question);
         $Answer->save();
+        $user = Auth::user();
+        $user->notify(new NewMessage());
 
         return redirect()->route('questions.show',['question_id' => $question->id])->with('message', 'Saved');
     }
@@ -106,9 +111,11 @@ class AnswerController extends Controller
 
         ]);
 
+        $user = Auth::user();
         $answer = Answer::find($answer);
         $answer->body = $request->body;
         $answer->save();
+        $user->notify(new UpdateMessage());
 
         return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer])->with('message', 'Updated');
 
