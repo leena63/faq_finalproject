@@ -12,4 +12,7 @@ Epic:
 Implementing notification system where user will get notification email when their question is answered or updated.
 
 User Stories:
-1. Users will be notified when their question is answered.
+1. User will get email verification after registering to the application.
+2. Users will be notified when their question is answered.
+3. Users will be notified when answer is edited.
+3. Users can directly see which question was answered from the link in email.
