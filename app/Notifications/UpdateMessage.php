@@ -46,7 +46,7 @@ class UpdateMessage extends Notification
         $StringPath = explode("/", $Path);
         return (new MailMessage)
                     ->line('You have new notification update.')
-                    ->action('Notification Action', \route('questions.show', $StringPath[1]))
+                    ->action('View Updated Answer', \route('questions.show', $StringPath[1]))
                     ->line('Thank you for using our application');
     }
 

@@ -57,8 +57,8 @@ class AnswerController extends Controller
         $Answer->user()->associate(Auth::user());
         $Answer->question()->associate($question);
         $Answer->save();
-        $user = Auth::user();
-        $user->notify(new NewMessage());
+        $UserNewMessage = User::find($question->id);
+        $UserNewMessage->notify(new NewMessage());
 
         return redirect()->route('questions.show',['question_id' => $question->id])->with('message', 'Saved');
     }
@@ -114,8 +114,8 @@ class AnswerController extends Controller
         $user = Auth::user();
         $answer = Answer::find($answer);
         $answer->body = $request->body;
-        $answer->save();
-        $user->notify(new UpdateMessage());
+        $UserUpdateMessage = User::find($question);
+        $UserUpdateMessage->notify(new UpdateMessage());
 
         return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer])->with('message', 'Updated');
 
