@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Http\Request;
 
 class NewMessage extends Notification
 {
@@ -40,9 +41,12 @@ class NewMessage extends Notification
      */
     public function toMail($notifiable)
     {
+        $RequestAns = Request::capture();
+        $Path = $RequestAns->path();
+        $StringPath = explode("/", $Path);
         return (new MailMessage)
                     ->line('You have new notification')
-                    ->action('Notification Action', url('/'))
+                    ->action('View Answer', \route('questions.show', $StringPath[1]))
                     ->line('Thank you for using our application');
     }
 

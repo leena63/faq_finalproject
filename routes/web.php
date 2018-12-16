@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');;
 
 Route::get('/user/{user_id}/profile', 'ProfileController@create')->name('profile.create');
 Route::get('/user/{user_id}/profile/{profile_id}', 'ProfileController@show')->name('profile.show');
@@ -38,6 +38,11 @@ Route::resources([
     'questions' => 'QuestionController',
 ]);
 
+Auth::routes(['verify' => true]);
+
+Route::get('profile', function () {
+    // Only verified users may enter...
+})->middleware('verified');
 
 
 
