@@ -17,4 +17,6 @@ User Stories:
 3. Users will be notified when answer is edited.
 3. User are redirected to the answered question when they click on 'View Answer' button in email.
 
+Note: sendgrid account is used to send email.
+
 heroku: https://faq-finalproject-leena.herokuapp.com/
