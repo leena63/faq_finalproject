@@ -16,3 +16,5 @@ User Stories:
 2. Users will be notified when their question is answered.
 3. Users will be notified when answer is edited.
 3. Users can directly see which question was answered from the link in email.
+
+heroku: https://faq-finalproject.herokuapp.com/
