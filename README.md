@@ -13,8 +13,8 @@ Implementing notification system where user will get notification email when the
 
 User Stories:
 1. User will get email verification after registering to the application.
-2. Users will be notified when their question is answered.
+2. Registered Users will be notified when someone answers their question.
 3. Users will be notified when answer is edited.
-3. Users can directly see which question was answered from the link in email.
+3. User are redirected to the answered question when they click on 'View Answer' button in email.
 
-heroku: https://faq-finalproject.herokuapp.com/
+heroku: https://faq-finalproject-leena.herokuapp.com/
